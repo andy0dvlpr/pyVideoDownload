@@ -2,16 +2,18 @@ import tkinter as tk
 import os
 
 def download():
-    print("In download function.")
     link = linkinput.get()
     selection = radio_var.get()
     if selection == 1:
-        print("Selected 1.")
-        os.system("youtube-dl.exe -x --audio-format mp3 --audio-quality 192k " + link)
-    print("Didn't pick a value.")
+        os.system("youtube-dl.exe -x --audio-format mp3 --audio-quality 192k" + " " + "\"" + link + "\"")
+    if selection == 2:
+        os.system("youtube-dl.exe -f mp4" + " " + "\"" + link + "\"")
+    if selection == 3:
+        os.system("youtube-dl.exe --yes-playlist -x --audio-format mp3 --audio-quality 192k" + " " + "\"" + link + "\"")
+    if selection == 4:
+        os.system("youtube-dl.exe --yes-playlist -f mp4" + " " + "\"" + link + "\"")
 
 window = tk.Tk()
-
 radio_var = tk.IntVar()
 R1 = tk.Radiobutton(window, text="Download song", variable=radio_var, value=1)
 R1.select() # A graphical glitch occurs when we don't provide a value to be selected.
@@ -21,7 +23,6 @@ R4 = tk.Radiobutton(window, text="Download videos from a playlist", variable=rad
 label = tk.Label(text="Link:")
 linkinput = tk.Entry(width=100)
 button = tk.Button(text="Download",  command=download)
-print("Ready to press download.")
 
 R1.pack()
 R2.pack()

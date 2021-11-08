@@ -3,14 +3,15 @@ import os
 from typing import Collection
 
 def download():
-    link = linkinput.get()
+    link = linki.get()
+    bitrate = bitratei.get()
     selection = radio_var.get()
     if selection == 1:
-        os.system("youtube-dl.exe -x --audio-format mp3 --audio-quality 192k" + " " + "\"" + link + "\"")
+        os.system("youtube-dl.exe -x --audio-format mp3 --audio-quality " + bitrate + "k" + " " + "\"" + link + "\"")
     if selection == 2:
         os.system("youtube-dl.exe -f mp4" + " " + "\"" + link + "\"")
     if selection == 3:
-        os.system("youtube-dl.exe --yes-playlist -x --audio-format mp3 --audio-quality 192k" + " " + "\"" + link + "\"")
+        os.system("youtube-dl.exe --yes-playlist -x --audio-format mp3 --audio-quality " + bitrate + "k" + " " + "\"" + link + "\"")
     if selection == 4:
         os.system("youtube-dl.exe --yes-playlist -f mp4" + " " + "\"" + link + "\"")
 
@@ -25,6 +26,7 @@ window = tk.Tk()
 bitratef = tk.Frame(window)
 bitratei = tk.Entry(bitratef, width=10)
 bitratet = tk.Label(bitratef, text="Bitrate:")
+bitratei.insert(0, string="192")
 
 # RADIO
 radiof = tk.Frame(window)

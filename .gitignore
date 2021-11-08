@@ -1,5 +1,8 @@
-# Don't include youtube-dl.exe
+# For this project
 youtube-dl.exe
+*.mp4
+*.mp3
+*.m4a
 
 ### PYTHON TEMPLATE ###
 

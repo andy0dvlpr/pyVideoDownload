@@ -14,29 +14,51 @@ def download():
     if selection == 4:
         os.system("youtube-dl.exe --yes-playlist -f mp4" + " " + "\"" + link + "\"")
 
-window = tk.Tk()
-bitrate = tk.Frame(window)
-bitrateinput = tk.Entry(bitrate, width=10)
-label2 = tk.Label(bitrate, text="Bitrate:")
-radio_var = tk.IntVar()
-R1 = tk.Radiobutton(window, text="Download song", variable=radio_var, value=1)
-R1.select() # A graphical glitch occurs when we don't provide a value to be selected.
-R2 = tk.Radiobutton(window, text="Download video", variable=radio_var, value=2)
-R3 = tk.Radiobutton(window, text="Download songs from a playlist", variable=radio_var, value=3)
-R4 = tk.Radiobutton(window, text="Download videos from a playlist", variable=radio_var, value=4)
-label = tk.Label(text="Link:")
-linkinput = tk.Entry(width=100)
-button = tk.Button(text="Download",  command=download)
+#### GUI
+#region
 
-bitrate.grid(column=1, row=1)
-label2.grid(column=1, row=1)#column=1, row=1, sticky="W")
-bitrateinput.grid(column=2, row=1)#column=2, row=1, sticky="W")
-R1.grid(column=1, row=2)
-R2.grid(column=1, row=3)
-R3.grid(column=1, row=4)
-R4.grid(column=1, row=5)
-label.grid(column=1, row=6)
-linkinput.grid(column=1, row=7)
-button.grid(column=1, row=8)
+## ELEMENTS
+#region
+window = tk.Tk()
+
+# BITRATE
+bitratef = tk.Frame(window)
+bitratei = tk.Entry(bitratef, width=10)
+bitratet = tk.Label(bitratef, text="Bitrate:")
+
+# RADIO
+radiof = tk.Frame(window)
+radio_var = tk.IntVar()
+R1 = tk.Radiobutton(radiof, text="Download song", variable=radio_var, value=1)
+R1.select() # A graphical glitch occurs when we don't provide a value to be selected.
+R2 = tk.Radiobutton(radiof, text="Download video", variable=radio_var, value=2)
+R3 = tk.Radiobutton(radiof, text="Download songs from a playlist", variable=radio_var, value=3)
+R4 = tk.Radiobutton(radiof, text="Download videos from a playlist", variable=radio_var, value=4)
+
+# LINK
+linkf = tk.Frame(window)
+linkt = tk.Label(linkf, text="Link:")
+linki = tk.Entry(linkf, width=100)
+linkb = tk.Button(linkf, text="Download",  command=download)
+#endregion
+
+## RENDER
+#region
+radiof.grid(column=1, row=1)
+R1.grid()
+R2.grid()
+R3.grid()
+R4.grid()
+
+bitratef.grid(column=2, row=1)
+bitratet.grid(column=1, row=1)
+bitratei.grid(column=2, row=1)
+
+linkf.grid(column=1, row=2, columnspan=2)
+linkt.grid()
+linki.grid()
+linkb.grid()
 
 window.mainloop()
+#endregion
+#endregion
